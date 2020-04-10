@@ -21,7 +21,7 @@ public class Base {
 	public static Properties getConfig() throws IOException
 	{
 		prop=new Properties();
-		FileInputStream fis=new FileInputStream("C:\\01_work\\TER\\TER_Java\\eclipse-workspace\\BDDFramework\\src\\test\\java\\Automation\\BDDFramework\\global.properties");		
+		FileInputStream fis=new FileInputStream("src\\test\\java\\Automation\\BDDFramework\\global.properties");		
 	    prop.load(fis);
 		
 		return prop;		
