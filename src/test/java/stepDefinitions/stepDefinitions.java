@@ -247,11 +247,17 @@ public class stepDefinitions {
 		}        
     }
 
+    @Then("^User was navigated to final confirmation page with text \"([^\"]*)\"$")
+    public void user_was_navigated_to_final_confirmation_page_with_text_something(String strArg1) throws Throwable {
+        String messageTxt = homepage.getMessageTxt();
+        Assert.assertTrue(messageTxt.contains(strArg1));
+    }
+	
     @And("^User was navigated to Greencart Landing page$")
     public void user_was_navigated_to_greencart_landing_page() throws Throwable {
-        throw new PendingException();
+    	int size = homepage.getProducts().size();
+    	System.out.println(".products-wrapper size: " + size);
+    	Assert.assertTrue(size>0);
     }
-
-	
 
 }

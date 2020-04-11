@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -121,4 +123,19 @@ public class HomePage {
 	{
 		return driver.findElement(proceedBtn);
 	}
+	
+	// Message Text
+	By messageTxt = By.xpath("//div[@class='wrapperTwo']/span");
+	public String getMessageTxt() {
+		return driver.findElement(messageTxt).getText();
+	}
+	
+	// homepage contains a web element "//div[@class='products-wrapper']"
+	// driver.findElements( By.id("...") ).size() != 0
+	public List<WebElement> getProducts() {
+		By productsWrapper = By.cssSelector(".products-wrapper");
+		return driver.findElements(productsWrapper);
+	}
+	
+	
 }
