@@ -1,2 +1,2 @@
 # BDDFramework
-BDD Framework for Web Test Automation Java + Cucumber + Selenium
+BDD Framework for Web Test Automation Java + Cucumber + Selenium + Maven
