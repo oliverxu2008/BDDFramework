@@ -29,50 +29,10 @@ import java.util.Properties;
 import Automation.BDDFramework.Base;
 
 @RunWith(Cucumber.class)
-public class stepDefinitions {
-
-	public WebDriver driver;
-	public Properties prop;
-	JavascriptExecutor js;
+public class stepDefinitions extends Base{
+	
 	HomePage homepage;
-
-	String imgPath;  // the path to store the screenshot
-	boolean wantScreenShot;
-	Integer waitTimer;
-	
-	public void takeSnapShot(WebDriver webdriver, String fileWithPath) throws Exception{
-        //Convert web driver object to TakeScreenshot
-        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
-
-        //Call getScreenshotAs method to create image file
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-        //Move image file to new destination
-        File DestFile=new File(fileWithPath);
-
-        //Copy file at destination
-        //FileUtils.copyFile(SrcFile, DestFile);
-        FileHandler.copy(SrcFile, DestFile);
-        
-        // sleep 500 ms
-        Thread.sleep(500);
-    }
-	
-	String imgFile(String imgPath) {
-		// to dynamically generate a unique file name for screenshot like: 
-		// C:\01_work\TER\TER_Java\screenShot\TER_0130_07-13-56.jpg
-		  
-		LocalDateTime myDateObj = LocalDateTime.now();
-		    
-		//DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
-		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MMdd_HH-mm-ss");
-		String formattedDate = myDateObj.format(myFormatObj);
-		    
-		String fileName;
-		    
-		fileName = imgPath + "TER_"  + formattedDate + ".jpg";
-		return fileName;
-	}	
+	JavascriptExecutor js;
 
 	@Given("^User is on Greencart Landing page$")
 	public void user_is_on_Greencart_Landing_page() throws Throwable {
@@ -198,47 +158,6 @@ public class stepDefinitions {
     @And("^User clicks Place Order$")
     public void user_clicks_place_order() throws Throwable {
         homepage.getPlaceOrderBtn().click();
-        Thread.sleep(waitTimer);
-        
-		// take screen shot
-		if (wantScreenShot) {
-			takeSnapShot(driver, imgFile(imgPath));
-		}        
-    }
-
-    @And("^User selects country (.+)$")
-    public void user_selects_country(String country) throws Throwable {
-        homepage.getCountrySelect().click();
-        Thread.sleep(waitTimer);
-        
-		// take screen shot
-		if (wantScreenShot) {
-			takeSnapShot(driver, imgFile(imgPath));
-		}        
-        
-        homepage.setCountry(country).click();
-        Thread.sleep(waitTimer);
-        
-		// take screen shot
-		if (wantScreenShot) {
-			takeSnapShot(driver, imgFile(imgPath));
-		}        
-    }
-
-    @And("^User ticks Terms and Conditions$")
-    public void user_ticks_terms_and_conditions() throws Throwable {
-        homepage.getCheckAgree().click();
-        Thread.sleep(waitTimer);
-        
-		// take screen shot
-		if (wantScreenShot) {
-			takeSnapShot(driver, imgFile(imgPath));
-		}        
-    }
-
-    @And("^User clicks Proceed button$")
-    public void user_clicks_proceed_button() throws Throwable {
-        homepage.getProceedBtn().click();
         Thread.sleep(waitTimer);
         
 		// take screen shot

@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 		glue = "stepDefinitions",
 		
 		// dryRun is mainly used to check whether the stepDefinition were done for the feature files.
-		//dryRun = true,
+//		dryRun = true,
 		
 		// monochrome is to generate a tidy output of plain text result
 		monochrome = true,
